@@ -9,9 +9,7 @@ export const Checkout = ({
   const { state, houseno, street, zip, city } = user.address;
   useEffect(() => {
     if (isAuthenticated) {
-      //clear cart data on the local storage when user places/checkouts the order
       localStorage.removeItem("cart");
-      //update the cart
       fetchFromCart();
     }
   }, [fetchFromCart, isAuthenticated]);

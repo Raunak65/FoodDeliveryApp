@@ -7,7 +7,7 @@ const CartRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<ViewCart />} />
-      {/* Making checkout option available to only customers */}
+
       <Route path="/checkout" element={<Checkout />} />
     </Routes>
   );

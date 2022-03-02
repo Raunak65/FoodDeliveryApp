@@ -17,17 +17,21 @@ import { loadUser } from "./app/auth/action/authAction";
 import { loadFood } from "./app/food/actions/foodAction";
 import FoodRouters from "./app/food/routings/FoodRouters";
 import CartRouter from "./app/cart/CartRouter";
+import ProfileRouter from "./app/profiles/routings/ProfileRouter";
 // react and redux
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
+if (localStorage.token && localStorage.userId) {
+  setAuthToken(localStorage.token, localStorage.userId);
 }
 function App() {
   useEffect(() => {
-    store.dispatch(loadUser());
-    store.dispatch(loadFood());
-    // do we need to update the userinfo?
-  }, [loadUser, loadFood]);
+    const userid = localStorage.getItem("userId");
+    console.log("check for useeffect 1"); // do we need to update the userinfo?
 
+    if (userid) store.dispatch(loadUser(userid));
+    store.dispatch(loadFood());
+
+    console.log("check for useeffect 2"); // do we need to update the userinfo?
+  }, [loadUser, loadFood]);
   // it should do some fundamental checks for token.
   // useEffect
   return (
@@ -45,6 +49,7 @@ function App() {
             ></Route>
             <Route path="/food/*" element={<FoodRouters></FoodRouters>}></Route>
             <Route path="/cart/*" element={<CartRouter />} />
+            <Route path="/profiles/*" element={<ProfileRouter />} />
           </Routes>
           <Footer></Footer>
         </Router>

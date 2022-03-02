@@ -6,23 +6,17 @@ import FoodCard from "../../food/components/FoodCard";
 import { loadFood } from "../../food/actions/foodAction";
 import { allFoods } from "../../assets/images/food-images/allFoods";
 import { Row, Col } from "react-simple-flex-grid";
-export const Dashboard = ({
-  auth: { user },
-  loadFood,
-  foods: {
-    food: { content },
-  },
-}) => {
+export const Dashboard = ({ auth: { user }, loadFood, foods: { food } }) => {
   useEffect(() => {
     loadFood();
   }, [loadFood]);
 
   return (
     <div className="container" style={{ width: "110rem" }}>
-      <h1 className="large text-primary">Dashboard</h1>
-      <p className="lead">
-        <i className="fas fa-user"></i> {user && user.name}
-      </p>
+      <div>
+        <h2>All Foods</h2>
+      </div>
+      <br />
       <div className="row main">
         <div className="row">
           <div className="col"></div>
@@ -40,8 +34,8 @@ export const Dashboard = ({
         </div>
         <div className="col-md-3 mt-3"></div>
         <div className="foods">
-          {content &&
-            content.map((f) => {
+          {food &&
+            food.content.map((f) => {
               return <FoodCard key={f.id} food={f}></FoodCard>;
             })}
         </div>

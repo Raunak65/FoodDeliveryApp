@@ -9,12 +9,13 @@ const Header = ({ auth: { user, isAuthenticated }, logout }) => {
     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
       <li className="nav-item">
         <Link className="nav-link" to="/dashboard">
-          Welcome {user && user.name}
+          <i className="fas fa-user"></i>
+          {user && user.name}
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/order-history">
-          Order history
+        <Link className="nav-link" to="/profiles/edit-profile">
+          Profile
         </Link>
       </li>
 

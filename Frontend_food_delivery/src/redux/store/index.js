@@ -34,7 +34,8 @@ store.subscribe(() => {
   // can we compare the date from two states?
   if (previousState.auth.token !== currentState.auth.token) {
     const token = currentState.auth.token;
-    setAuthToken(token);
+    const id = currentState.auth.user.id;
+    setAuthToken(token, id);
   }
   // based on that can we take a call to update the token?
 });

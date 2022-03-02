@@ -4,6 +4,7 @@ import auth from "../../app/auth/reducers/authReducer";
 import alerts from "../../app/core/reducers/alertReducer";
 import foods from "../../app/food/reducers/foodReducers";
 import cart from "../../app/cart/reducer/orderReducer";
+import profile from "../../app/profiles/reducers/profileReducer";
 
 // in imp statement then it will refer the index.js internally.
 export default combineReducers({
@@ -11,6 +12,7 @@ export default combineReducers({
   alerts,
   foods,
   cart,
+  profile,
 });
 // we registered the authReducer in our combinedreducer.
 // combineReducers : function from redux
